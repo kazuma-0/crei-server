@@ -11,7 +11,9 @@ export class PeopleService {
   constructor(@InjectModel(Person.name) private PersonModel: Model<PersonDocument>) { }
   
   async create(createPersonDto: CreatePersonDto): Promise<Person> {
-    return await this.PersonModel.create(createPersonDto);
+    console.log(createPersonDto)
+    const person = new this.PersonModel(createPersonDto);
+    return await person.save()
   }
 
   async findAll(): Promise<Person[]> {

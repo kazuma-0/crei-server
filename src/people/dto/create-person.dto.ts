@@ -15,5 +15,5 @@ export class CreatePersonDto {
     properties: Record<string, IProperties>
 
     @IsArray()
-    socials: ILinks[],
+    socials: ILinks[]
 }
