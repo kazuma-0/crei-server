@@ -1,15 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger } from '@nestjs/common';
 import { PeopleService } from './people.service';
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
 
 @Controller('people')
 export class PeopleController {
-  constructor(private readonly peopleService: PeopleService) {}
+  constructor(private readonly peopleService: PeopleService) { }
+  private readonly logger = new Logger("people")
 
   @Post()
-  create(@Body() createPersonDto: CreatePersonDto) {
-    return this.peopleService.create(createPersonDto);
+  async create(@Body() createPersonDto: CreatePersonDto) {
+    this.logger.log(createPersonDto)
+    return await this.peopleService.create(createPersonDto);
   }
 
   @Get()
