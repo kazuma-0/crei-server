@@ -1,19 +1,19 @@
-import { IsString, IsEnum, IsObject, IsArray } from "class-validator";
-import { ILinks, IProperties, Role } from "../entities/person.entity";
+import { IsString, IsEnum, IsObject, IsArray } from 'class-validator';
+import { ILinks, IProperties, Role } from '../entities/person.entity';
 
 export class CreatePersonDto {
-    @IsString()
-    name: string;
+  @IsString()
+  name: string;
 
-    @IsString()
-    description: string;
+  @IsString()
+  description: string;
 
-    @IsEnum(Role)
-    role: Role;
+  @IsEnum(Role)
+  role: Role;
 
-    @IsObject()
-    properties: Record<string, IProperties>
+  @IsObject()
+  properties: Record<string, IProperties>;
 
-    @IsArray()
-    socials: ILinks[],
+  @IsArray()
+  socials: ILinks[];
 }
